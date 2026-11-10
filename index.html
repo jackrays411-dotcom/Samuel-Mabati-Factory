@@ -1,0 +1,972 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17232e">
+<meta name="description" content="Browse mabati, pre-cut iron sheets and KenTank water tanks at Samuel's Mabati Factory, Kenya.">
+<title>Samuel's Mabati Factory | Kenya</title>
+
+<style>
+:root {
+  --dark: #17232e;
+  --dark2: #233341;
+  --orange: #ff852e;
+  --orange-dark: #e76d19;
+  --light: #f3f5f7;
+  --white: #fff;
+  --text: #263442;
+  --muted: #71808d;
+  --border: #e5e9ed;
+  --green: #20b96b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button, input { font: inherit; }
+a { text-decoration: none; }
+
+.topbar {
+  background: var(--orange);
+  color: var(--dark);
+  text-align: center;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+header {
+  background: var(--dark);
+  color: white;
+  padding: 13px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 15px #0002;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: white;
+}
+
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 8px;
+  background: var(--orange);
+  color: var(--dark);
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.brand h1 {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.brand small {
+  color: #bdc8d1;
+  font-size: 10px;
+}
+
+.header-chat {
+  background: var(--green);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 9px 11px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.hero {
+  background:
+    linear-gradient(100deg, #17232ef5, #17232edb),
+    url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=85")
+    center/cover;
+  color: white;
+  padding: 65px 6% 55px;
+}
+
+.hero-content { max-width: 680px; }
+
+.eyebrow {
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero h2 {
+  font-size: clamp(32px, 6vw, 50px);
+  line-height: 1.12;
+  margin: 13px 0;
+}
+
+.hero h2 span { color: var(--orange); }
+
+.hero p {
+  color: #d8e0e7;
+  font-size: 14px;
+  max-width: 480px;
+  margin-bottom: 22px;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--dark);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  margin-top: 25px;
+  font-size: 11px;
+  color: #e4ebf0;
+}
+
+.catalogue {
+  padding: 42px 5% 55px;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-heading h2 {
+  font-size: 27px;
+  color: var(--dark);
+}
+
+.section-heading p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.search-area {
+  max-width: 650px;
+  margin: 0 auto 22px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 0 14px;
+}
+
+.search-box span {
+  font-size: 22px;
+  color: var(--muted);
+}
+
+.search-box input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  padding: 15px 0;
+  background: transparent;
+  font-size: 14px;
+  color: var(--dark);
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 34px;
+}
+
+.filter-btn {
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--dark);
+  border-radius: 25px;
+  padding: 9px 15px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: white;
+}
+
+.category-section { margin-bottom: 40px; }
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.category-title .number {
+  width: 38px;
+  height: 38px;
+  background: var(--orange);
+  color: var(--dark);
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.category-title h3 {
+  font-size: 17px;
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+.category-title p {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: transform .2s, box-shadow .2s;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px #17232e12;
+}
+
+.product-photo-wrap {
+  width: 100%;
+  height: 175px;
+  background: #edf0f2;
+  border-radius: 7px;
+  overflow: hidden;
+  margin-bottom: 13px;
+}
+
+.product-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s;
+}
+
+.product-card:hover .product-photo {
+  transform: scale(1.04);
+}
+
+.product-card h4 {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--dark);
+  margin-bottom: 5px;
+}
+
+.product-card .unit {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.price {
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--orange-dark);
+  margin: 8px 0 13px;
+}
+
+.order-btn {
+  display: block;
+  text-align: center;
+  background: var(--green);
+  color: white;
+  padding: 11px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: auto;
+  transition: background .2s;
+}
+
+.order-btn:hover { background: #159653; }
+
+.no-results {
+  display: none;
+  text-align: center;
+  background: white;
+  padding: 35px 15px;
+  border-radius: 10px;
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+.offer-banner {
+  background: var(--dark);
+  color: white;
+  padding: 30px 22px;
+  border-radius: 12px;
+  text-align: center;
+  margin: 42px 0;
+}
+
+.offer-banner h3 {
+  color: var(--orange);
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.offer-banner p {
+  font-size: 13px;
+  color: #d3dce4;
+}
+
+.contact {
+  background: white;
+  padding: 42px 5%;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 25px;
+  color: var(--dark);
+}
+
+.contact p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 7px 0;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contact-buttons a {
+  padding: 12px 17px;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  background: var(--green);
+}
+
+footer {
+  background: var(--dark);
+  color: #cbd4dc;
+  padding: 22px 5%;
+  text-align: center;
+  font-size: 11px;
+}
+
+footer strong { color: var(--orange); }
+
+.floating-chat {
+  position: fixed;
+  bottom: 18px;
+  right: 16px;
+  background: var(--green);
+  color: white;
+  padding: 13px 17px;
+  border-radius: 35px;
+  font-weight: bold;
+  font-size: 12px;
+  box-shadow: 0 5px 20px #0003;
+  z-index: 90;
+}
+
+@media(max-width: 750px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-photo-wrap { height: 145px; }
+}
+
+@media(max-width: 380px) {
+  .product-grid { grid-template-columns: 1fr; }
+
+  .product-card {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 0 12px;
+    align-items: start;
+  }
+
+  .product-photo-wrap {
+    width: 92px;
+    height: 92px;
+    grid-row: span 4;
+    margin: 0;
+  }
+
+  .product-card h4 { margin: 0 0 3px; }
+
+  .product-card .unit,
+  .product-card .price { margin: 3px 0; }
+
+  .order-btn {
+    grid-column: 1/-1;
+    margin-top: 12px;
+  }
+}
+
+@media(min-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  QUALITY BUILDING MATERIALS • GREAT VALUE • KENYA
+</div>
+
+<header>
+  <a href="#" class="brand">
+    <div class="brand-icon">SM</div>
+    <div>
+      <h1>Samuel's Mabati Factory</h1>
+      <small>Building Materials & Water Tanks</small>
+    </div>
+  </a>
+
+  <a class="header-chat"
+     href="https://wa.me/254762160866"
+     target="_blank" rel="noopener">
+    WhatsApp Us
+  </a>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Your Building Materials Partner</div>
+    <h2>Build Strong.<br><span>Build Smart.</span></h2>
+    <p>
+      Explore our range of mabati products, pre-cut iron sheets
+      and water tanks. Find what you need and enquire directly
+      through WhatsApp.
+    </p>
+
+    <a href="#catalogue" class="hero-btn">
+      Explore Our Products →
+    </a>
+
+    <div class="hero-points">
+      <span>✓ Mabati Products</span>
+      <span>✓ Pre-Cut Sheets</span>
+      <span>✓ Water Tanks</span>
+    </div>
+  </div>
+</section>
+
+<main class="catalogue" id="catalogue">
+
+  <div class="section-heading">
+    <div class="eyebrow">Product Catalogue</div>
+    <h2>Explore Our Products</h2>
+    <p>Search, compare prices and order directly on WhatsApp.</p>
+  </div>
+
+  <div class="search-area">
+    <div class="search-box">
+      <span>⌕</span>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search Box Profile, KenTank, Tile..."
+        aria-label="Search products">
+    </div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All Products</button>
+    <button class="filter-btn" data-filter="mabati">Mabati Products</button>
+    <button class="filter-btn" data-filter="precut">Pre-Cut Mabati</button>
+    <button class="filter-btn" data-filter="tanks">Water Tanks</button>
+  </div>
+
+  <div class="no-results" id="noResults">
+    <h3>No matching products found</h3>
+    <p>Try another product name or category.</p>
+  </div>
+
+  <section class="category-section" data-section="mabati">
+    <div class="category-title">
+      <div class="number">01</div>
+      <div>
+        <h3>Mabati Products</h3>
+        <p>Price per metre</p>
+      </div>
+    </div>
+    <div class="product-grid" id="mabatiGrid"></div>
+  </section>
+
+  <section class="category-section" data-section="precut">
+    <div class="category-title">
+      <div class="number">02</div>
+      <div>
+        <h3>Gauge 30 Pre-Cut Profile Box & Ordinary Mabati</h3>
+        <p>Ready-to-use pre-cut sheets</p>
+      </div>
+    </div>
+    <div class="product-grid" id="precutGrid"></div>
+  </section>
+
+  <section class="category-section" data-section="tanks">
+    <div class="category-title">
+      <div class="number">03</div>
+      <div>
+        <h3>KenTank Water Tanks</h3>
+        <p>Special offer</p>
+      </div>
+    </div>
+    <div class="product-grid" id="tanksGrid"></div>
+  </section>
+
+  <div class="offer-banner">
+    <h3>Need Help Choosing?</h3>
+    <p>
+      Contact Samuel's Mabati Factory directly on WhatsApp
+      for product enquiries and assistance.
+    </p>
+  </div>
+
+</main>
+
+<section class="contact">
+  <div class="eyebrow">Get In Touch</div>
+  <h2>Ready to Make an Enquiry?</h2>
+  <p>Chat with us directly for product information and orders.</p>
+  <p><strong>Samuel's Mabati Factory</strong></p>
+  <p>Kenya</p>
+
+  <div class="contact-buttons">
+    <a href="https://wa.me/254762160866"
+       target="_blank" rel="noopener">
+      WhatsApp: 0762 160 866
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>
+    © <span id="year"></span> Samuel's Mabati Factory.
+    All rights reserved.
+  </p>
+  <p>Website by <strong>JACK JUSTINS STUDIO</strong></p>
+</footer>
+
+<a class="floating-chat"
+   href="https://wa.me/254762160866"
+   target="_blank" rel="noopener">
+  WhatsApp Chat
+</a>
+
+<script>
+const WHATSAPP_NUMBER = "254762160866";
+const BUSINESS_NAME = "Samuel's Mabati Factory";
+
+// Supplier reference photographs.
+// These are illustrative images, not confirmed factory stock photos.
+const productImages = {
+  box: "https://static.wixstatic.com/media/e26807_c34a5472dcbd4ee38d4c13cc2d68099b~mv2.jpg/v1/fill/w_500%2Ch_500%2Cal_c%2Cq_80%2Cenc_avif%2Cquality_auto/e26807_c34a5472dcbd4ee38d4c13cc2d68099b~mv2.jpg",
+
+  corrugated: "https://bomamabatiltd.co.ke/assets/roofing-sheets-DrJ8jWab.jpg",
+
+  roman: "https://www.roofingmabati.co.ke/images/Bamboo2.jpg",
+
+  versatile: "https://static.wixstatic.com/media/e26807_6504f18c8d6b4340b82e65cbde746c3a~mv2.jpg/v1/fit/w_500%2Ch_500%2Cq_90/file.jpg",
+
+  tanks: "https://mwananchidistributors.com/images/kentank.jpg"
+};
+// All 21 products and original prices.
+const products = [
+  {
+    id: 1,
+    name: "Box Profile Iron Sheet",
+    price: 400,
+    unit: "Per metre",
+    category: "mabati",
+    image: "box",
+    keywords: "box profile roofing iron sheet mabati"
+  },
+  {
+    id: 2,
+    name: "Ordinary Iron Sheet",
+    price: 300,
+    unit: "Per metre",
+    category: "mabati",
+    image: "corrugated",
+    keywords: "ordinary iron sheet roofing mabati"
+  },
+  {
+    id: 3,
+    name: "Corrugated Iron Sheet",
+    price: 350,
+    unit: "Per metre",
+    category: "mabati",
+    image: "corrugated",
+    keywords: "corrugated roofing iron sheet"
+  },
+  {
+    id: 4,
+    name: "Versatile Iron Sheet",
+    price: 600,
+    unit: "Per metre",
+    category: "mabati",
+    image: "versatile",
+    keywords: "versatile roofing sheet mabati"
+  },
+  {
+    id: 5,
+    name: "Roman Tile Iron Sheet",
+    price: 500,
+    unit: "Per metre",
+    category: "mabati",
+    image: "roman",
+    keywords: "roman tile tile roofing iron sheet"
+  },
+  {
+    id: 6,
+    name: "Ordinary Reject Iron Sheet",
+    price: 150,
+    unit: "Per metre",
+    category: "mabati",
+    image: "corrugated",
+    keywords: "ordinary reject iron sheet"
+  },
+  {
+    id: 7,
+    name: "Box Profile Reject Iron Sheet",
+    price: 200,
+    unit: "Per metre",
+    category: "mabati",
+    image: "box",
+    keywords: "box profile reject iron sheet"
+  },
+  {
+    id: 8,
+    name: "Profile Box 3m",
+    price: 600,
+    unit: "Per sheet",
+    category: "precut",
+    image: "box",
+    keywords: "profile box three metre 3m"
+  },
+  {
+    id: 9,
+    name: "Profile Box 2.5m",
+    price: 500,
+    unit: "Per sheet",
+    category: "precut",
+    image: "box",
+    keywords: "profile box two point five metre 2.5m"
+  },
+  {
+    id: 10,
+    name: "Profile Box 2m",
+    price: 400,
+    unit: "Per sheet",
+    category: "precut",
+    image: "box",
+    keywords: "profile box two metre 2m"
+  },
+  {
+    id: 11,
+    name: "Ordinary Mabati 3m",
+    price: 450,
+    unit: "Per sheet",
+    category: "precut",
+    image: "corrugated",
+    keywords: "ordinary mabati three metre 3m"
+  },
+  {
+    id: 12,
+    name: "Ordinary Mabati 2.5m",
+    price: 350,
+    unit: "Per sheet",
+    category: "precut",
+    image: "corrugated",
+    keywords: "ordinary mabati two point five metre 2.5m"
+  },
+  {
+    id: 13,
+    name: "Ordinary Mabati 2m",
+    price: 300,
+    unit: "Per sheet",
+    category: "precut",
+    image: "corrugated",
+    keywords: "ordinary mabati two metre 2m"
+  },
+  {
+    id: 14,
+    name: "KenTank 1000 Litres",
+    price: 4500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 1000 litres"
+  },
+  {
+    id: 15,
+    name: "KenTank 2000 Litres",
+    price: 10500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 2000 litres"
+  },
+  {
+    id: 16,
+    name: "KenTank 3000 Litres",
+    price: 14500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 3000 litres"
+  },
+  {
+    id: 17,
+    name: "KenTank 4000 Litres",
+    price: 18500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 4000 litres"
+  },
+  {
+    id: 18,
+    name: "KenTank 5000 Litres",
+    price: 24500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 5000 litres"
+  },
+  {
+    id: 19,
+    name: "KenTank 6000 Litres",
+    price: 27500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 6000 litres"
+  },
+  {
+    id: 20,
+    name: "KenTank 8000 Litres",
+    price: 32500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 8000 litres"
+  },
+  {
+    id: 21,
+    name: "KenTank 10000 Litres",
+    price: 45500,
+    unit: "Water tank",
+    category: "tanks",
+    image: "tanks",
+    keywords: "kentank water tank 10000 litres"
+  }
+];
+
+const formatPrice = amount =>
+  "KSh " + amount.toLocaleString("en-KE");
+
+function getOrderMessage(product) {
+  const unitText =
+    product.unit === "Per metre" ? " per metre" :
+    product.unit === "Per sheet" ? " per sheet" :
+    "";
+
+  return `Hello ${BUSINESS_NAME}, I want to order ${product.name} at ${formatPrice(product.price)}${unitText}. Please confirm availability.`;
+}
+
+function getImageUrl(product) {
+  return productImages[product.image] || productImages.corrugated;
+}
+
+const grids = {
+  mabati: document.getElementById("mabatiGrid"),
+  precut: document.getElementById("precutGrid"),
+  tanks: document.getElementById("tanksGrid")
+};
+
+function renderProducts(list) {
+  Object.values(grids).forEach(grid => {
+    grid.innerHTML = "";
+  });
+
+  list.forEach(product => {
+    const card = document.createElement("article");
+    card.className = "product-card";
+
+    const photoWrap = document.createElement("div");
+    photoWrap.className = "product-photo-wrap";
+
+    const photo = document.createElement("img");
+    photo.className = "product-photo";
+    photo.src = getImageUrl(product);
+    photo.alt = product.name;
+    photo.loading = "lazy";
+   photo.onerror = function() {
+  this.onerror = null;
+  this.style.display = "none";
+  photoWrap.style.background = "#e8edf1";
+  photoWrap.innerHTML =
+    '<div style="height:100%;display:grid;place-items:center;color:#71808d;font-size:12px;text-align:center;padding:10px;">Product photo unavailable</div>';
+};
+    photoWrap.appendChild(photo);
+
+    const name = document.createElement("h4");
+    name.textContent = product.name;
+
+    const unit = document.createElement("div");
+    unit.className = "unit";
+    unit.textContent = product.unit;
+
+    const price = document.createElement("div");
+    price.className = "price";
+    price.textContent = formatPrice(product.price);
+
+    const order = document.createElement("a");
+    order.className = "order-btn";
+    const message = getOrderMessage(product);
+
+const whatsappURL =
+  "https://wa.me/254762160866?text=" +
+  encodeURIComponent(message);
+
+order.href = whatsappURL;
+order.target = "_blank";
+order.rel = "noopener";
+order.textContent = "Order on WhatsApp";
+    card.append(photoWrap, name, unit, price, order);
+    grids[product.category].appendChild(card);
+  });
+}
+
+// Search and category filters.
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const sections = document.querySelectorAll(".category-section");
+const noResults = document.getElementById("noResults");
+
+let activeFilter = "all";
+
+function applyFilters() {
+  const query = searchInput.value.toLowerCase().trim();
+
+  const filtered = products.filter(product => {
+    const matchesCategory =
+      activeFilter === "all" ||
+      product.category === activeFilter;
+
+    const searchable =
+      `${product.name} ${product.category} ${product.keywords}`.toLowerCase();
+
+    return matchesCategory && searchable.includes(query);
+  });
+
+  renderProducts(filtered);
+
+  sections.forEach(section => {
+    const sectionName = section.dataset.section;
+    const hasProducts =
+      filtered.some(product => product.category === sectionName);
+
+    section.style.display = hasProducts ? "block" : "none";
+  });
+
+  noResults.style.display =
+    filtered.length ? "none" : "block";
+}
+
+searchInput.addEventListener("input", applyFilters);
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+    activeFilter = button.dataset.filter;
+
+    applyFilters();
+  });
+});
+
+// Current year in footer.
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// Initial catalogue display.
+applyFilters();
+</script>
+
+</body>
+</html
